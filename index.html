@@ -1,0 +1,84 @@
+<html>
+ <head>
+ <meta name="viewport" content="width=device-width" />
+ <title>MOTOR Control</title>
+ </head>
+ <body style="background-image:url(f1car.jpg);" >
+ Motor control:
+ <form method="post" action="mtc.php">
+ <input type="submit" value="F20%" name="f20">
+ <input type="submit" value="F40%" name="f40">
+ <input type="submit" value="F60%" name="f60">
+<input type="submit" value="F80%" name="f80">
+<input type="submit" value="F100%" name="f100"><br/>
+<input type="submit" value="B20%" name="b20">
+<input type="submit" value="B40%" name="b40">
+ <input type="submit" value="B60%" name="b60">
+ <input type="submit" value="B80%" name="b80">
+<input type="submit" value="B100%" name="b100"><br/>
+<input type="submit" value="Stop" name="off">
+</form>
+<?php
+$setmode17 = shell_exec("/usr/local/bin/gpio -g mode 14 out");
+$setmode18 = shell_exec("/usr/local/bin/gpio -g mode 15 out");
+$setmode19 = shell_exec("/usr/local/bin/gpio -g mode 18 out");
+$setmode20 = shell_exec("/usr/local/bin/gpio -g mode 23 out");
+$setmode21 = shell_exec("/usr/local/bin/gpio -g mode 24 out");
+$setmode22 = shell_exec("/usr/local/bin/gpio -g mode 25 out");
+$setmode23 = shell_exec("/usr/local/bin/gpio -g mode 8 out");
+$setmode24 = shell_exec("/usr/local/bin/gpio -g mode 7 out");
+$setmode25 = shell_exec("/usr/local/bin/gpio -g mode 27 out");
+$setmode26 = shell_exec("/usr/local/bin/gpio -g mode 22 out");
+if(isset($_POST['f20'])){
+$gpio_on = shell_exec("/usr/local/bin/gpio -g write 14 1");
+ }
+elseif(isset($_POST['f40'])){
+$gpio_on = shell_exec("/usr/local/bin/gpio -g write 15 1");
+
+ }
+elseif(isset($_POST['f60'])){
+ $gpio_on = shell_exec("/usr/local/bin/gpio -g write 18 1");
+ }
+elseif(isset($_POST['f80'])){
+ $gpio_on = shell_exec("/usr/local/bin/gpio -g write 23 1");
+}
+elseif(isset($_POST['f100'])){
+  $gpio_on = shell_exec("/usr/local/bin/gpio -g write 24 1");
+
+ }
+ elseif(isset($_POST['b20'])){
+ $gpio_on = shell_exec("/usr/local/bin/gpio -g write 25 1");
+
+}
+ elseif(isset($_POST['b40'])){
+ $gpio_on = shell_exec("/usr/local/bin/gpio -g write 8 1");
+
+}
+ elseif(isset($_POST['b60'])){
+ $gpio_on = shell_exec("/usr/local/bin/gpio -g write 7 1");
+
+ }
+ elseif(isset($_POST['b80'])){
+ $gpio_on = shell_exec("/usr/local/bin/gpio -g write 27 1");
+
+ }
+ elseif(isset($_POST['b100'])){
+ $gpio_on = shell_exec("/usr/local/bin/gpio -g write 22 1");
+
+ }
+ elseif(isset($_POST['off'])){
+
+$gpio_off = shell_exec("/usr/local/bin/gpio -g write 14 0");
+$gpio_off = shell_exec("/usr/local/bin/gpio -g write 15 0");
+$gpio_off = shell_exec("/usr/local/bin/gpio -g write 18 0");
+$gpio_off = shell_exec("/usr/local/bin/gpio -g write 23 0");
+$gpio_off = shell_exec("/usr/local/bin/gpio -g write 24 0");
+$gpio_off = shell_exec("/usr/local/bin/gpio -g write 25 0");
+ $gpio_off = shell_exec("/usr/local/bin/gpio -g write 8 0");
+ $gpio_off = shell_exec("/usr/local/bin/gpio -g write 7 0");
+ $gpio_off = shell_exec("/usr/local/bin/gpio -g write 27 0");
+ $gpio_off = shell_exec("/usr/local/bin/gpio -g write 22 0");
+}
+?>
+</body>
+86 </html>
